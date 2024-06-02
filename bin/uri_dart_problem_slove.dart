@@ -1,22 +1,22 @@
 import 'dart:io';
-void main(){
-  double money=double.parse(stdin.readLineSync()!);
-  List<double> notesList=[100,50,20,10,5,2];
-  List<double> coinList=[1,0.5,0.25,0.10,0.05,0.01];
 
-  int notes=0;
-  print('NOTAS:');
-  for(double x in notesList){
-    notes=(money~/x);
-    print('$notes nota(s) de R\$ ${x.toStringAsFixed(2)}');
-    money= money-notes*x;
-  }
-  if(money<2){
-    print('MOEDAS:');
-    for(double C in coinList){
-      notes=(money~/C);
-      print('$notes moeda(s) de R\$ ${C.toStringAsFixed(2)}');
-      money= money-notes*C;
+void main() {
+  List<String> inputStrings = stdin.readLineSync()!.split(' ');
+
+  List<int> inputNumbers = inputStrings.map(int.parse).toList();
+
+  // Step 3: Sort the list in ascending order using a simple bubble sort algorithm
+  for (int i = 0; i < inputNumbers.length; i++) {
+    for (int j = 0; j < inputNumbers.length - 1 - i; j++) {
+      if (inputNumbers[j] > inputNumbers[j + 1]) {
+        // Swap inputNumbers[j] and inputNumbers[j + 1]
+        int temp = inputNumbers[j];
+        inputNumbers[j] = inputNumbers[j + 1];
+        inputNumbers[j + 1] = temp;
+      }
     }
   }
+
+  // Step 4: Print the sorted list
+  print(inputNumbers);
 }
