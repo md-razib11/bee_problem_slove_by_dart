@@ -1,22 +1,28 @@
 import 'dart:io';
 
 void main() {
-  List<String> inputStrings = stdin.readLineSync()!.split(' ');
+  // Read the inputs from the user
+  String input1 = stdin.readLineSync()!;
+  String input2 = stdin.readLineSync()!;
+  String input3 = stdin.readLineSync()!;
 
-  List<int> inputNumbers = inputStrings.map(int.parse).toList();
+  // Create a map to store the animal types based on the characteristics
+  Map<String, String> animalMap = {
+    'vertebrado ave carnivoro': 'aguia',
+    'vertebrado ave onivoro': 'pomba',
+    'vertebrado mamifero onivoro': 'homem',
+    'vertebrado mamifero herbivoro': 'vaca',
+    'invertebrado inseto hematofago': 'pulga',
+    'invertebrado inseto herbivoro': 'lagarta',
+    'invertebrado anelideo hematofago': 'sanguessuga',
+    'invertebrado anelideo onivoro': 'minhoca',
+  };
 
-  // Step 3: Sort the list in ascending order using a simple bubble sort algorithm
-  for (int i = 0; i < inputNumbers.length; i++) {
-    for (int j = 0; j < inputNumbers.length - 1 - i; j++) {
-      if (inputNumbers[j] > inputNumbers[j + 1]) {
-        // Swap inputNumbers[j] and inputNumbers[j + 1]
-        int temp = inputNumbers[j];
-        inputNumbers[j] = inputNumbers[j + 1];
-        inputNumbers[j + 1] = temp;
-      }
-    }
+  // Concatenate the inputs to form a key
+  String key = '$input1 $input2 $input3';
+
+  // Look up the key in the map and print the corresponding animal
+  if (animalMap.containsKey(key)) {
+    print(animalMap[key]);
   }
-
-  // Step 4: Print the sorted list
-  print(inputNumbers);
 }

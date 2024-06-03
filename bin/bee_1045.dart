@@ -2,12 +2,12 @@ import 'dart:io';
 import 'dart:math';
 
 void main() {
-  List<String> input = stdin.readLineSync()!.split(' ');
+  List<double> input = stdin.readLineSync()!.split(' ').map(double.parse).toList();
   input.sort((a, b) => b.compareTo(a));
 
-  double a = double.parse(input[0]);
-  double b = double.parse(input[1]);
-  double c = double.parse(input[2]);
+  double a = input[0];
+  double b = input[1];
+  double c = input[2];
 
   if (a >= b + c) {
     print('NAO FORMA TRIANGULO');
